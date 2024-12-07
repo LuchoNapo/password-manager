@@ -31,7 +31,7 @@ export default function SidebarRoutes() {
               <AccordionContent>
                 {children.map(({ item, href, icon: Icon }) => (
                   <div key={item}>
-                    <Link href={href} className="p-2 flex gap-2 items-center hover:bg-blue-100/20 duration-300 transition-all rounded-md">
+                    <Link href={href} className="py-2.5 px-6 flex gap-2 items-center hover:bg-blue-100/20 duration-300 transition-all rounded-md">
                       <Icon size={20} />
                       {item}
                     </Link>
@@ -57,8 +57,8 @@ export default function SidebarRoutes() {
               </AccordionTrigger>
               <AccordionContent>
                 {children.map(({ item, href, icon: Icon, premium }) => (
-                  <div key={item} className="flex items-center justify-between mt-2 hover:bg-blue-100/20 duration-300 transition-all rounded-md pr-1">
-                    <Link href={href} className="flex gap-2 items-center sm:px-6 px-6 pr-2 py-2">
+                  <div key={item} className="flex items-center justify-between hover:bg-blue-100/20 duration-300 transition-all rounded-md pr-1">
+                    <Link href={href} className="flex gap-2 items-center sm:px-6 px-6 pr-2  py-2.5">
                       <Icon size={20} />
                       {item}
                     </Link>

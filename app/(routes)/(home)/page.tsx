@@ -1,9 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
+import HeaderMain from "./components/HeaderMain/HeaderMain";
 
 export default function Home() {
   return (
    <div>
-      Home
+      <HeaderMain />
    </div>
   );
 }

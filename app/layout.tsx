@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description: "A password manager made with Next.js",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
