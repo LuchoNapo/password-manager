@@ -1,6 +1,7 @@
 "use client"
 
 import { z } from "zod"
+import axios from "axios"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
@@ -21,11 +22,14 @@ import { copyClicboard } from "@/lib/copyClickBoard"
 import { useState } from "react"
 import { generatePassword } from "@/lib/generatePassword"
 import { Textarea } from "@/components/ui/textarea"
+import { toast } from "@/hooks/use-toast"
+import { useRouter } from "next/navigation"
+
 
 
 export default function FormAddElement() {
     const [showPassword, setShowPassword] = useState(false)
-
+    const router = useRouter()
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -42,10 +46,31 @@ export default function FormAddElement() {
     })
 
     // 2. Define a submit handler.
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values)
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+       try{
+        await axios.post("/api/items", values)
+        toast({
+            title: "Elemento creado ✓",
+        })
+        form.reset({
+            typeElement: "",
+            isFavotrite: false,
+            name: "",
+            directory: "",
+            userName: "",
+            password: "",
+            urlWebsite: "",
+            notes: "",
+            userId: "asdasfasf",
+        })
+        router.refresh();
+       // eslint-disable-next-line @typescript-eslint/no-unused-vars
+       } catch (error) {
+           toast({
+               title: "Error al crear elemento",
+               variant: "destructive",
+           })
+       }
     }
 
     const generateRandomPassword = () => {
