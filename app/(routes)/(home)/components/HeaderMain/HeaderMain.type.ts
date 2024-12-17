@@ -3,3 +3,6 @@ export type DataHeaderMainItemsProps = {
     typeElement: "password" | "folder" | "";
     text: string;
 }
+export type HeaderMainProps = {
+    userID: string;
+}

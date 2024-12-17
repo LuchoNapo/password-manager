@@ -12,7 +12,7 @@ export async function POST(request: Request) {
             username,
             password,
             notes,
-            userId,
+            userID,
             directory
         } = await request.json()
 
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
                 username,
                 password,
                 notes,
-                userId,
+                userID,
                 directory
             }
         });

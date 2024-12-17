@@ -37,10 +37,10 @@ model Element {
   username    String?
   password    String?
   notes       String?
-  userId      String  @db.ObjectId
+  userID      String  @db.ObjectId
   directory   String?
 
-  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User? @relation(fields: [userID], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
