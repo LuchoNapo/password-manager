@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import HeaderMain from "./components/HeaderMain/HeaderMain";
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
+import TableData from "./components/TableData/TableData";
 
 export default async function Home() {
   const session = await getServerSession()
@@ -23,15 +24,14 @@ export default async function Home() {
     }
   })
 
-  if(!user){
+  if(!user || !user.elements) {
     return redirect("/")
   }
-  
-  console.log(user);
-  
+    
   return (
    <div>
       <HeaderMain userID={user.id} />
+      <TableData elements={user.elements} />
    </div>
   );
 }

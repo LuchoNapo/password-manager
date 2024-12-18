@@ -30,15 +30,15 @@ model User {
 
 model Element {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  name        String?
-  typeElement String //Inicio de session - Tarjeta - identidad
+  name        String
+  typeElement String 
   isFavourite Boolean
-  urlWebsite  String?
-  username    String?
-  password    String?
-  notes       String?
+  urlWebsite  String
+  username    String
+  password    String
+  notes       String
   userID      String  @db.ObjectId
-  directory   String?
+  directory   String
 
   user User? @relation(fields: [userID], references: [id], onDelete: Cascade)
 

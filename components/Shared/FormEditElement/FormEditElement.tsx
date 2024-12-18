@@ -1,5 +1,5 @@
 "use client"
-
+import { FormEditElementProps } from "./FormEditElement.type";
 import { z } from "zod"
 import axios from "axios"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -13,67 +13,52 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
-import { formSchema } from "./FormAddElement.form"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Copy, Earth, Eye, Shuffle } from "lucide-react"
 import { copyClicboard } from "@/lib/copyClickBoard"
-import { useState } from "react"
 import { generatePassword } from "@/lib/generatePassword"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
-import { FormAddElementProps } from "./FormAddElement.types"
+import { formSchema } from "./FormEditElement.form";
+import { useState } from "react";
 
-
-
-export default function FormAddElement({userID, closeDialog}: FormAddElementProps) {
+export default function FormEditElement({ dataElement }: FormEditElementProps) {
     const [showPassword, setShowPassword] = useState(false)
     const router = useRouter()
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            typeElement: "",
-            isFavourite: false,
-            name: "",
-            directory: "",
-            username: "",
-            password: "",
-            urlWebsite: "",
-            notes: "",
-            userID,
+            typeElement: dataElement.typeElement,
+            isFavourite: dataElement.isFavourite,
+            name: dataElement.name,
+            directory: dataElement.directory,
+            username: dataElement.username,
+            password: dataElement.password,
+            urlWebsite: dataElement.urlWebsite,
+            notes: dataElement.notes,
+            userID: dataElement.userID,
         },
     })
 
     // 2. Define a submit handler.
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-       try{
-        await axios.post("/api/items", values)
-        toast({
-            title: "Elemento creado ✓",
-        })
-        form.reset({
-            typeElement: "",
-            isFavourite: false,
-            name: "",
-            directory: "",
-            username: "",
-            password: "",
-            urlWebsite: "",
-            notes: "",
-        })
-        closeDialog();
-        router.refresh();
-       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-       } catch (error) {
-           toast({
-               title: "Error al crear elemento",
-               variant: "destructive",
-           })
-       }
+        try {
+            await axios.patch(`/api/items/${dataElement.id}`, values)
+            toast({
+                title: "Item editado ✔️",
+            })
+            router.push("/");
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (error) {
+            toast({
+                title: "Error al crear elemento",
+                variant: "destructive",
+            })
+        }
     }
-
     const generateRandomPassword = () => {
         const password = generatePassword()
         form.setValue("password", password)
@@ -82,10 +67,10 @@ export default function FormAddElement({userID, closeDialog}: FormAddElementProp
     const updateUrl = () => {
         form.setValue("urlWebsite", window.location.href)
     }
-
     return (
+        <div>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="md:grid-cols-2 gap-y-2 grid gap-x-4 md:-mt-10">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="md:grid-cols-2 gap-y-2 grid gap-x-4 md:mt-10">
                     <FormField
                         control={form.control}
                         name="typeElement"
@@ -246,9 +231,10 @@ export default function FormAddElement({userID, closeDialog}: FormAddElementProp
                                 <FormMessage />
                             </FormItem>
                         )} />
-                        <div />
+                    <div />
                     <Button type="submit">Guardar</Button>
                 </form>
             </Form>
+        </div>
     )
 }

@@ -62,7 +62,7 @@ export default function HeaderMain(props: HeaderMainProps) {
                                             <DialogTitle className="text-slate-500">Nuevo elemento: <span className="text-gray-800">{text}</span></DialogTitle>
                                         </DialogHeader>
                                         {typeElement === "password" && (
-                                         <FormAddElement userID={userID} />
+                                         <FormAddElement userID={userID} closeDialog={closeDialogAndDropdown} />
                                         )}
                                     </DialogContent>
                                 </Dialog>
