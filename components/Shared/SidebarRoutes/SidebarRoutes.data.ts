@@ -9,7 +9,7 @@ export const dataSidebarElements = [
         children: [
             {
                 item: "Favourites",
-                href: "#",
+                href: "/favourites",
                 icon: Star,
             },
             {
