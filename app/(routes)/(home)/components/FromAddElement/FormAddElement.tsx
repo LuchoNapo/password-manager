@@ -99,14 +99,14 @@ export default function FormAddElement({userID, closeDialog}: FormAddElementProp
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
-                                        <SelectItem value="Inicio de sessión">
-                                            Inicio de sessión
+                                        <SelectItem value="Google Drive">
+                                            Google Drive
                                         </SelectItem>
-                                        <SelectItem value="Tarjeta">
-                                            Tarjeta
+                                        <SelectItem value="Email">
+                                            Email
                                         </SelectItem>
-                                        <SelectItem value="Identidad">
-                                            Identidad
+                                        <SelectItem value="Wordpress">
+                                            Wordpress
                                         </SelectItem>
                                     </SelectContent>
                                 </Select>
@@ -157,14 +157,11 @@ export default function FormAddElement({userID, closeDialog}: FormAddElementProp
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
-                                        <SelectItem value="Social">
-                                            Social
+                                        <SelectItem value="Interno">
+                                            Interno
                                         </SelectItem>
-                                        <SelectItem value="Arts">
-                                            Arts
-                                        </SelectItem>
-                                        <SelectItem value="Shopping">
-                                            Shopping
+                                        <SelectItem value="Cliente">
+                                            Cliente
                                         </SelectItem>
                                     </SelectContent>
                                 </Select>
@@ -177,7 +174,7 @@ export default function FormAddElement({userID, closeDialog}: FormAddElementProp
                         name="username"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Usuario</FormLabel>
+                                <FormLabel>Email / Usuario</FormLabel>
                                 <FormControl>
                                     <div className="relative">
 

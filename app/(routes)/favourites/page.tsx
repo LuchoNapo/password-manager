@@ -29,7 +29,7 @@ export default async function FavouritesPage() {
   }
   return (
     <div>
-      <h1>Lista de elementos favoritos</h1>
+      <h1 className="text-xl md:text-3xl font-semibold">Lista de elementos favoritos</h1>
       <DataTableItems elements={user.elements}/>
     </div>
   )

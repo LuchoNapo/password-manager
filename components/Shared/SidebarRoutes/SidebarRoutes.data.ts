@@ -13,18 +13,18 @@ export const dataSidebarElements = [
                 icon: Star,
             },
             {
-                item: "Google",
-                href: "#",
+                item: "Google Drive",
+                href: "/google-elements",
                 icon: GoogleDriveIcon,
             },
             {
-                item: "Mail",
-                href: "#",
+                item: "Email",
+                href: "email-elements",
                 icon: Mail,
             },
             {
                 item: "Wordpress",
-                href: "#",
+                href: "wordpress-elements",
                 icon: WordpressIcon,
             },
         ]
