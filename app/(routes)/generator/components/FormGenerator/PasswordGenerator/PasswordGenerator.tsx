@@ -9,16 +9,14 @@ export default function PasswordGenerator(props: PasswordGeneratorProps) {
         setIsMayusSelected,
         isMinusSelected,
         setIsMinusSelected,
-        isSpecialCharSelected,
-        setIsSpecialCharSelected,
         isNumberSelected,
-        setNumberSelected } = props;
+        setNumberSelected,
+        isSpecialCharSelected,
+        setIsSpecialCharSelected, } = props;
 
     const handleRangeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setLengthPassword(Number(event.target.value));
     }
-
-
 
     return (
         <div>
@@ -45,13 +43,13 @@ export default function PasswordGenerator(props: PasswordGeneratorProps) {
                 <div>
                     <div className="flex items-center space-x-2 my-4 bg-slate-100 rounded-md shadow-md p-4">
                         <Checkbox id="numbers" checked={isNumberSelected} onCheckedChange={() => setNumberSelected(!isNumberSelected)} />
-                        <label htmlFor="minus" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-700">Numbers <span className="italic text-gray-500">0-9</span></label>
+                        <label htmlFor="numbers" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-700">Numbers <span className="italic text-gray-500">0-9</span></label>
                     </div>
                 </div>
                 <div>
                     <div className="flex items-center space-x-2 my-4 bg-slate-100 rounded-md shadow-md p-4">
-                        <Checkbox id="" checked={isSpecialCharSelected} onCheckedChange={() => setIsSpecialCharSelected(!isSpecialCharSelected)} />
-                        <label htmlFor="minus" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-700">Caracteres: <span className="italic text-gray-500">!@#$&%^*</span> </label>
+                        <Checkbox id="special" checked={isSpecialCharSelected} onCheckedChange={() => setIsSpecialCharSelected(!isSpecialCharSelected)} />
+                        <label htmlFor="special" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-700">Caracteres: <span className="italic text-gray-500">!@#$&%^*</span> </label>
                     </div>
                 </div>
             </>

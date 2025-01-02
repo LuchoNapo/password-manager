@@ -6,26 +6,24 @@ import { copyClicboard } from "@/lib/copyClickBoard";
 import { Copy, Shuffle } from "lucide-react";
 import { useEffect, useState } from "react";
 import PasswordGenerator from "./PasswordGenerator/PasswordGenerator";
-import { UserGenerator } from "../UserGenerator/UserGenerator";
 import { generateCustomPassword } from "@/lib/generateCustomPassword";
 import { generateRandomUsername } from "@/lib/generateRandomUser";
 
 export function FormGenerator() {
   const [selectedValue, setSelectedValue] = useState<"password" | "user" | string>("password");
   const [itemValueInput, setItemValueInput] = useState("")
-  const [userTypeSelected, setUserTypeSelected] = useState("username")
+  const [userTypeSelected,] = useState("username")
   const [lengthPassword, setLengthPassword] = useState(11)
   const [isMayusSelected, setIsMayusSelected] = useState(true)
   const [isMinusSelected, setIsMinusSelected] = useState(true)
-  const [isSpecialCharSelected, setIsSpecialCharSelected] = useState(true)
   const [isNumberSelected, setNumberSelected] = useState(true)
+  const [isSpecialCharSelected, setIsSpecialCharSelected] = useState(true)
 
   useEffect(() => {
     if (selectedValue === "password") {
-      const newPassword = generateCustomPassword(lengthPassword, isMayusSelected, isMinusSelected, isSpecialCharSelected, isNumberSelected)
+      const newPassword = generateCustomPassword(lengthPassword, isMayusSelected, isMinusSelected, isNumberSelected, isSpecialCharSelected)
       setItemValueInput(newPassword)
     }
-
   }, [lengthPassword, isMayusSelected, isMinusSelected, isSpecialCharSelected, isNumberSelected, selectedValue])
 
   const handleShuffleClick = () => {
@@ -82,10 +80,10 @@ export function FormGenerator() {
           setIsMayusSelected={setIsMayusSelected}
           isMinusSelected={isMinusSelected}
           setIsMinusSelected={setIsMinusSelected}
-          isSpecialCharSelected={isSpecialCharSelected}
-          setIsSpecialCharSelected={setIsSpecialCharSelected}
           isNumberSelected={isNumberSelected}
           setNumberSelected={setNumberSelected}
+          isSpecialCharSelected={isSpecialCharSelected}
+          setIsSpecialCharSelected={setIsSpecialCharSelected}
         />
       )}
 

@@ -7,8 +7,8 @@ export type PasswordGeneratorProps = {
     setIsMayusSelected: Dispatch<SetStateAction<boolean>>
     isMinusSelected: boolean,
     setIsMinusSelected: Dispatch<SetStateAction<boolean>>
-    isSpecialCharSelected: boolean,
-    setIsSpecialCharSelected: Dispatch<SetStateAction<boolean>>
     isNumberSelected: boolean,
     setNumberSelected: Dispatch<SetStateAction<boolean>>
+    isSpecialCharSelected: boolean,
+    setIsSpecialCharSelected: Dispatch<SetStateAction<boolean>>
 }

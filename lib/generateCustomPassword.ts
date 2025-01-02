@@ -30,6 +30,7 @@ export const generateCustomPassword = (
     if (specialCharacter)
         password += specialCharset.charAt(Math.floor(Math.random() * specialCharset.length));
 
+
     for (let i = password.length; i < lengthPassword; i++) {
         password += charset.charAt(Math.floor(Math.random() * charset.length));
     }
