@@ -1,9 +1,8 @@
 "use client"
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ViewAnalyticsChartProps } from "./ViewAnalyticsChart.types";
 
 import * as React from "react"
-import { MessageSquareWarning, TrendingUp, User } from "lucide-react"
+import { User } from "lucide-react"
 import { Label, Pie, PieChart } from "recharts"
 import {
     Card,

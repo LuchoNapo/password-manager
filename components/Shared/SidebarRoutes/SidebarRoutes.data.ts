@@ -19,12 +19,12 @@ export const dataSidebarElements = [
             },
             {
                 item: "Email",
-                href: "email-elements",
+                href: "/email-elements",
                 icon: Mail,
             },
             {
                 item: "Wordpress",
-                href: "wordpress-elements",
+                href: "/wordpress-elements",
                 icon: WordpressIcon,
             },
         ]
