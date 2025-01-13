@@ -29,13 +29,13 @@ const chartConfig = {
 import { RepeatedPasswordChartProps } from "./RepeatedPasswordChart.type";
 
 export function RepeteadedPassword(props: RepeatedPasswordChartProps) {
-    const { repeated, unique } = props
-    const totalVisitors = unique + repeated
-    const chartData = [{ month: "", unique: unique, repeated: repeated }]
+    const { repeated, unique, total } = props
+    const totalPasswords = total
+    const chartData = [{ unique: unique, repeated: repeated }]
     return (
         <Card className="flex flex-col">
             <CardHeader className="items-center pb-0">
-                <CardTitle>Contraseñas repetidas y únicas</CardTitle>
+                <CardTitle>Contraseñas totales</CardTitle>
                 <CardDescription>Contador de contraseñas repetidos y únicos</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-1 items-center pb-0">
@@ -64,7 +64,7 @@ export function RepeteadedPassword(props: RepeatedPasswordChartProps) {
                                                     y={(viewBox.cy || 0) - 16}
                                                     className="fill-foreground text-2xl font-bold"
                                                 >
-                                                    {totalVisitors.toLocaleString()}
+                                                    {totalPasswords.toLocaleString()}
                                                 </tspan>
                                                 <tspan
                                                     x={viewBox.cx}
@@ -99,6 +99,9 @@ export function RepeteadedPassword(props: RepeatedPasswordChartProps) {
             <CardFooter className="flex-col gap-2 text-sm">
                 <div className="flex items-center gap-2 font-medium leading-none">
                     Tratar de no utilizar password repetidos <MessageSquareWarning className="h-4 w-4" />
+                </div>
+                <div className="leading-none text-muted-foreground">
+                    Showing total passwords created
                 </div>
             </CardFooter>
         </Card>
