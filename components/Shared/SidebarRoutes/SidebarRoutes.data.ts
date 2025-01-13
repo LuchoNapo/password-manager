@@ -1,4 +1,4 @@
-import { Landmark, LayoutList, Lock, Mail, Settings, Star, User } from "lucide-react";
+import { FolderClosed, Landmark, LayoutList, Lock, Mail, Settings, Star, User } from "lucide-react";
 import { WordpressIcon } from "../../Icons/WordpressIcon";
 import GoogleDriveIcon from "@/components/Icons/GoogleDriveIcon";
 
@@ -7,6 +7,12 @@ export const dataSidebarElements = [
         title: "Elements",
         icon: LayoutList,
         children: [
+            {
+                item: "Todos los elementos",
+                href: "/all-boxes",
+                icon: FolderClosed,
+
+            },
             {
                 item: "Favourites",
                 href: "/favourites",

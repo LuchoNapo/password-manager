@@ -17,7 +17,6 @@ export default function SidebarRoutes() {
       <div>
 
         <SingleItem href="/" label="Homepage" icon={House} />
-
         {dataSidebarElements.map(({ title, icon: Icon, children }) => (
           <Accordion key={title} type="single" collapsible className="w-full px-2">
             <AccordionItem value="item-1" className="border-b-0">
@@ -33,7 +32,7 @@ export default function SidebarRoutes() {
                 {children.map(({ item, href, icon: Icon }) => (
                   <div key={item}>
                     <Link href={href} className="py-2.5 px-6 flex gap-2 items-center hover:bg-blue-100/20 duration-300 transition-all rounded-md">
-                      <Icon size={20} />
+                      <Icon height={20} width={20} />
                       {item}
                     </Link>
                   </div>

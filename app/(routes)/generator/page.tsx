@@ -3,7 +3,7 @@ import { FormGenerator } from "./components/FormGenerator";
 
 export default function Generator() {
   return (
-    <div>
+    <div className="p-6">
         <HeaderGenerator />
         <FormGenerator />
     </div>

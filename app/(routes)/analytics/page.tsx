@@ -31,7 +31,7 @@ export default async function AnalyticsPage() {
     const { google, wordpress, email } = countTypeElement(user.elements)        
 
   return (
-    <div className="flex flex-col md:grid md:grid-cols-2 gap-5 mb-4">
+    <div className="flex flex-col md:grid md:grid-cols-2 gap-5 mb-4 p-6">
         <RepeteadedPassword repeated={repeated} unique={unique} total={user.elements.length} />
         <ViewAnalyticsChart wordpress={wordpress} google={google} email={email} />
         <div className="col-span-2">

@@ -1,37 +1,44 @@
-import { getServerSession } from "next-auth";
-import HeaderMain from "./components/HeaderMain/HeaderMain";
-import { redirect } from "next/navigation";
-import { db } from "@/lib/db";
-import TableData from "./components/TableData/TableData";
+import React from 'react'
+import OptionCard from './components/OptionCard/OptionCard'
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
+import { db } from '@/lib/db'
+import { Options } from './components/OptionCard/OptionCard.data'
 
-export default async function Home() {
-  const session = await getServerSession()
+export default async function page() {
 
-  if (!session || !session.user?.email) {
-    return redirect("/")
-  }
+    const session = await getServerSession()
 
-  const user = await db.user.findUnique({
-    where: {
-      email: session.user.email,
-    },
-    include: {
-      elements: {
-        orderBy: {
-          createdAt: "desc",
-        }
-      }
+    if (!session?.user?.email) {
+        return redirect("/auth/signin")
     }
-  })
+    const userDb = await db.user.findUnique({
+        where: {
+            email: session.user.email
+        }
+    })
+    if (!userDb) {
+        return redirect("/auth/signin")
+    }
 
-  if(!user || !user.elements) {
-    return redirect("/")
-  }
-    
-  return (
-   <div>
-      <HeaderMain userID={user.id} />
-      <TableData elements={user.elements} />
-   </div>
-  );
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('es-ES', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+
+    const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
+
+    return (
+        <div className='flex flex-col gap-4 items-center justify-center p-6 md:pt-6 md:h-screen pt-20'>
+            <div className=''>{capitalize(formattedDate)}</div>
+            <h1 className='text-3xl md:text-6xl font-semibold'>¡Bienvenido {userDb.name}!</h1>
+            <h2 className='text-xl md:text-2xl text-white/50'>¿Que deseas ver hoy?</h2>
+            <div className='grid grid-cols-2 gap-4'>
+                <OptionCard options={Options} />
+            </div>
+        </div>
+    )
 }

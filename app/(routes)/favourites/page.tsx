@@ -28,7 +28,7 @@ export default async function FavouritesPage() {
     redirect("/");
   }
   return (
-    <div>
+    <div className="p-6">
       <h1 className="text-xl md:text-3xl font-semibold">Lista de elementos favoritos</h1>
       <DataTableItems elements={user.elements}/>
     </div>

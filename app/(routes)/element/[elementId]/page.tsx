@@ -20,7 +20,7 @@ export default async function ElementPage({ params }: { params: { elementId: str
    }
     
     return (
-        <div>
+        <div className="p-6">
             <h1>Element Page</h1>
             <div>
                 <FormEditElement dataElement={element}/>

@@ -28,7 +28,7 @@ export default async function WordpressElements() {
       redirect("/");
     }
     return (
-      <div>
+      <div className='p-6'>
         <h1 className='text-xl md:text-3xl font-semibold'>Lista de Wordpress</h1>
         <DataTabeItems elements={user.elements} />
       </div>

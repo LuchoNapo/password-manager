@@ -1,10 +1,10 @@
 
-export function WordpressIcon() {
+export function WordpressIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
 
         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-            width="20" height="20" viewBox="0 0 512.000000 513.000000"
-            preserveAspectRatio="xMidYMid meet">
+            viewBox="0 0 512.000000 513.000000"
+            preserveAspectRatio="xMidYMid meet" {...props}>
 
             <g transform="translate(0.000000,513.000000) scale(0.100000,-0.100000)"
                 fill="#FFFFFF" stroke="none">

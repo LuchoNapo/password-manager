@@ -19,7 +19,7 @@ export default async function ProfilePage() {
   }
 
   return (
-    <div>
+    <div className="p-6">
       <h1 className="text-xl">Detalles de la cuenta</h1>
       <FormProfile user={userDb} />
     </div>
