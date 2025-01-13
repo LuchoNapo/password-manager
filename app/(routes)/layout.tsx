@@ -6,6 +6,7 @@ import React from 'react'
 
 export default function LayoutRoutes({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
+
         <main className='h-full select-none'>
             <div className='flex justify-between lg:hidden px-5 py-3 items-center bg-gray-900 '>
                 <div className='py-1 text-white'>

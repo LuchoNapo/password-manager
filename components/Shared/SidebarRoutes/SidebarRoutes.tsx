@@ -9,6 +9,7 @@ import SingleItem from "../SingleItem/SingleItem"
 import { ChartNoAxesColumn, House, LogOut, RectangleEllipsis } from "lucide-react"
 import { dataSidebarConfiguration, dataSidebarElements } from "./SidebarRoutes.data"
 import Link from "next/link"
+import { signOut } from "next-auth/react"
 
 export default function SidebarRoutes() {
   return (
@@ -73,7 +74,7 @@ export default function SidebarRoutes() {
         <SingleItem href="/analytics" label="Analytics" icon={ChartNoAxesColumn} />
       </div>
       <div className="lg:mb-5 mb-20">
-        <SingleItem href="#" onClick={() => console.log("Clicked")} label="Log Out" icon={LogOut} />
+        <SingleItem href="#" onClick={() => signOut()} label="Log Out" icon={LogOut} />
       </div>
     </div>
   )

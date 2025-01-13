@@ -38,7 +38,7 @@ export const dataSidebarConfiguration = [
         children: [
             {
                 item: "Profile",
-                href: "#",
+                href: "/profile",
                 icon: User,
                 premium: false,
             },
