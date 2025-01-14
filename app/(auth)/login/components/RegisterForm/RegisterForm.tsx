@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input"
 import { useRouter } from "next/navigation"
 import { toast } from "@/hooks/use-toast"
 
+
 const formSchema = z.object({
     email: z.string().min(2).max(50),
     password: z.string().min(2).max(50),
@@ -24,7 +25,8 @@ const formSchema = z.object({
 
 
 export default function RegisterForm() {
-    const router = useRouter()
+    const router = useRouter();
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -45,10 +47,26 @@ export default function RegisterForm() {
         });
 
         if (response.status === 200) {
-            router.push("/")
             toast({
                 title: "Registro realizado con éxito 🙌🏻",
             })
+            // Iniciar sesión automáticamente
+            const loginResponse = await fetch("/", {
+                method: "POST",
+                body: JSON.stringify({
+                    email: values.email,
+                    password: values.password,
+                }),
+            });
+
+            if (loginResponse.status === 200) {
+                router.push("/");
+            } else {
+                toast({
+                    title: "Error al iniciar sesión automáticamente",
+                    variant: "destructive",
+                });
+            }
         } else {
             toast({
                 title: "Error al registrar",

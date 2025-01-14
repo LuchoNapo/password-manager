@@ -4,10 +4,10 @@ export function WordpressIcon(props: React.SVGProps<SVGSVGElement>) {
 
         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512.000000 513.000000"
-            preserveAspectRatio="xMidYMid meet" {...props}>
+            preserveAspectRatio="xMidYMid meet" {...props} fill="currentColor">
 
             <g transform="translate(0.000000,513.000000) scale(0.100000,-0.100000)"
-                fill="#FFFFFF" stroke="none">
+                 stroke="none">
                 <path d="M2385 5124 c-468 -39 -893 -187 -1261 -439 -875 -600 -1288 -1647
                     -1058 -2684 210 -943 982 -1715 1925 -1925 209 -46 338 -60 569 -60 303 0 536
                     37 804 126 884 295 1542 1050 1711 1966 119 644 -19 1327 -379 1865 -415 622

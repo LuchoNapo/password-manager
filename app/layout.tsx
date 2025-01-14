@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster"
 import { Poppins } from "next/font/google";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import NextTopLoader from "nextjs-toploader";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -20,12 +22,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="">
       <body
-        className={`${poppins.className} antialiased`}
+        className={`${poppins.className} antialiased transition-all duration-400`}
       >
-        {children}
-        <Toaster />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextTopLoader />
+
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

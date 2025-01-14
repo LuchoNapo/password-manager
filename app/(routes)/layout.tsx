@@ -2,22 +2,14 @@
 import { Logo } from '@/components/Shared/Logo/Logo'
 import Sidebar from '@/components/Shared/Sidebar/Sidebar'
 import SidebarMobile from '@/components/Shared/SidebarMobile/SidebarMobile'
-import { ThemeProvider } from '@/components/ui/theme-provider'
-import NextTopLoader from 'nextjs-toploader';
+import DarkModeButton from '@/components/Shared/DarkModeButton/DarkModeButton'
 import React from 'react'
 
 export default function LayoutRoutes({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
 
         <main className='h-full select-none'>
-            <ThemeProvider
-                attribute="class"
-                defaultTheme="dark"
-                enableSystem
-                disableTransitionOnChange
-            >
-                <NextTopLoader />
-                <div className='flex justify-between lg:hidden px-5 py-3 items-center bg-gray-900 '>
+                    <div className='flex justify-between lg:hidden px-5 py-3 items-center bg-gray-900 '>
                     <div className='py-1 text-white'>
                         <Logo />
                     </div>
@@ -29,7 +21,7 @@ export default function LayoutRoutes({ children }: Readonly<{ children: React.Re
                 <div className='w-full lg:pl-72'>
                     <div>{children}</div>
                 </div>
-            </ThemeProvider>
+                <DarkModeButton />
         </main>
     )
 }

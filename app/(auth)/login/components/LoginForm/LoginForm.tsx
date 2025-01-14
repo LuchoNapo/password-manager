@@ -34,21 +34,30 @@ export default function LoginForm() {
 
     // 2. Define a submit handler.
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        const reponse = await signIn("credentials", {
+        const response = await signIn("credentials", {
             email: values.email,
             password: values.password,
             redirect: false,
         });
-        if(reponse?.status === 200) {
+
+        if (response?.status === 200) {
             toast({
                 title: "Bienvenido de nuevo! 👋🏻",
-            })
-            router.push("/")
+            });
+            router.push("/");
         } else {
+            const error = response?.error || "Error desconocido";
+            let errorMessage = "Credenciales incorrectas. Intenta nuevamente.";
+            if (error === "User not found") {
+                errorMessage = "Usuario no registrado. Verifica tu email.";
+            } else if (error === "Invalid credentials") {
+                errorMessage = "Credenciales incorrectas. Intenta nuevamente.";
+            }
+
             toast({
-                title: "Error al iniciar sesión",
+                title: errorMessage,
                 variant: "destructive",
-            })
+            });
         }
     }
 
